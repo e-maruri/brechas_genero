@@ -1,0 +1,12 @@
+name: brechas_genero
+title: brechas_genero
+username:
+account: e-maruri
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3239070
+bundleId: 3864772
+url: https://e-maruri.shinyapps.io/brechas_genero/
+when: 1605490147.45434
+asMultiple: FALSE
+asStatic: FALSE
