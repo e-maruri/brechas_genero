@@ -182,6 +182,19 @@ server = function(input, output) {
   }) # Termina Mapa de brecha salarial 
   
   
+  output$graph_enoe_brecha_sal_anual_econ <- renderPlotly({
+    enoe_brecha_sal_anual_econ %>%
+      plot_ly() %>%
+      add_trace(x = ~e_con, y = ~get(input$enoe_brecha_sal_anual_econ_var), type = "bar", frame=~year) %>%
+      layout( title = paste(get_label(enoe_brecha_sal_anual_econ[, input$enoe_brecha_sal_anual_econ_var])), 
+        showlegend = FALSE,
+        xaxis = list(title = ""),
+        yaxis = list(title = "", tickformat = "%"))
+  })
+
+  
+  
+  
 # ENUT --------------------------------------------------------------------
   output$RawData<-DT::renderDataTable({   #primera pestaÃÂ±a
     if(input$sexo==1){

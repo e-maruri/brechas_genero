@@ -155,6 +155,30 @@ enoe_brecha_sal_anual_edos <- enoe_brecha_sal_anual_edos %>%
          wgap_ing = wgap_ing*100) %>% 
   rename(CVE_EDO = ent)
 
+# GIF edo conyugal
+enoe_brecha_sal_anual_econ <- read_dta("www/enoe_brecha_sal_anual_econ.dta")
+
+enoe_brecha_sal_anual_econ <- enoe_brecha_sal_anual_econ %>% 
+  mutate(e_con = case_when(
+    e_con == 1 ~ "Unión libre", 
+    e_con == 2 ~ "Separado(a)", 
+    e_con == 3 ~ "Divorciado(a)", 
+    e_con == 4 ~ "Viudo(a)", 
+    e_con == 5 ~ "Casado(a)", 
+    e_con == 6 ~ "Soltero(a)"))
+
+# output$graph_enoe_brecha_sal_anual_econ <- renderPlotly({ 
+# enoe_brecha_sal_anual_econ %>%
+#     plot_ly() %>%
+#     add_trace(x = ~e_con, y = ~wgap_ixh, type = "bar", frame=~year) %>%
+#     layout(#title = "Comparación internacional de indicadores 2000-2020",
+#       showlegend = FALSE,
+#       xaxis = list(title = ""),
+#       yaxis = list(title = "", tickformat = "%"))
+# })
+
+
+
 # EMPLEO ------------------------------------------------------------------
 
 enoe_empleo <- read_dta("www/enoe_empleo_agregado.dta")
@@ -239,4 +263,5 @@ enoe_empleo_edos <- enoe_empleo_edos %>%
     sex == 1 ~ "Hombre",
     sex == 2 ~ "Mujer")) %>%
   rename(CVE_EDO = ent)
+
 

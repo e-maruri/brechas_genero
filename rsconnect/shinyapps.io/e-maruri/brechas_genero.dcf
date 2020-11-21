@@ -5,8 +5,8 @@ account: e-maruri
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 3239070
-bundleId: 3864772
+bundleId: 3868103
 url: https://e-maruri.shinyapps.io/brechas_genero/
-when: 1605490147.45434
+when: 1605554309.16567
 asMultiple: FALSE
 asStatic: FALSE

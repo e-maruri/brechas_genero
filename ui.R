@@ -119,11 +119,23 @@ body<-dashboardBody(
                          
                          box(width = 4,
                              helpText("Seleccione el periodo para mostrar"),
-                             sliderInput("enoe_brecha_sal_anual_informal_year", "Periodo", min=2005, max=2020, value=c(2005, 2020), sep = ""))
+                             sliderInput("enoe_brecha_sal_anual_informal_year", "Periodo", min=2005, max=2020, value=c(2005, 2020), sep = "")), 
                          
+                         box(width = 8, 
+                             h3("Brecha salarial de género por estado conyugal", align="center"), 
+                             h5("(promedio anual)", align="center"), 
+                             plotlyOutput("graph_enoe_brecha_sal_anual_econ")), 
+                         
+                         box(width = 4, 
+                             selectInput("enoe_brecha_sal_anual_econ_var", label = "Seleccione una variable:",
+                                         choices = list("Ingreso mensual" = "wgap_ing", 
+                                                        "Ingreso por hora" = "wgap_ixh"), 
+                                         selected = "wgap_ixh")) 
+
                 ), # Termina primera pestaña
                 
                 tabPanel("Empleo", "", # Inicia segunda pestaña 
+                         h2("Indicadores laborales de género", align="center"),
                          fluidRow(
                            box(width = 4, 
                                selectInput("enoe_var_emp", label = "Seleccione una variable:",
@@ -136,6 +148,7 @@ body<-dashboardBody(
                            box(width = 8, 
                                plotlyOutput("graph_enoe_empleo")), 
                            box(width = 8, 
+                               h3("Indicadores laborales por estado conyugal", align="center"),
                                plotlyOutput("graph_enoe_empleo_econ")),
                            box(width = 4, 
                                selectInput("enoe_empleo_econ_var", label = "Seleccione una variable:",
@@ -151,6 +164,7 @@ body<-dashboardBody(
                                helpText("Nota: la combinación año 2020 con trimestre distinto al primero no está disponible.")
                            ), 
                            box(width = 8, 
+                               h3("Indicadores laborales por nivel educativo", align="center"),
                                plotlyOutput("graph_enoe_empleo_educ")),
                            box(width = 4, 
                                selectInput("enoe_empleo_educ_var", label = "Seleccione una variable:",
